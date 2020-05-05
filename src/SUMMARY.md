@@ -7,4 +7,5 @@
     - [Week 1: Contribution Baseline](./implementation/week_1_contribution_baseline.md)
     - [Week 2: End-to-End Discovery](./implementation/week_2_end_to_end_discovery.md)
     - [Week 3: Stability and UI](./implementation/week_3_stability_and_ui.md)
+    - [Week 4: Audio and Rendering](./implementation/week_4_audio_and_rendering.md)
 - [Forks](./forks.md)
