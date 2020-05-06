@@ -10,4 +10,4 @@
     - [Week 4: Audio and Rendering](./implementation/week_4_audio_and_rendering.md)
     - [Week 5: Tidying](./implementation/week_5_tidying.md)
     - [Week 6: Fin Ack](./implementation/week_6_fin_ack.md)
-- [Forks](./forks.md)
+- [Issue Summary](./issue_summary.md)
