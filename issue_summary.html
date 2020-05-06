@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Issue Summary - WASM Rush</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="initial_state.html"><strong aria-hidden="true">2.</strong> Initial State</a></li><li class="chapter-item expanded "><a href="plan.html"><strong aria-hidden="true">3.</strong> Plan</a></li><li class="chapter-item expanded "><a href="implementation.html"><strong aria-hidden="true">4.</strong> Implementation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="implementation/week_1_contribution_baseline.html"><strong aria-hidden="true">4.1.</strong> Week 1: Contribution Baseline</a></li><li class="chapter-item expanded "><a href="implementation/week_2_end_to_end_discovery.html"><strong aria-hidden="true">4.2.</strong> Week 2: End-to-End Discovery</a></li><li class="chapter-item expanded "><a href="implementation/week_3_stability_and_ui.html"><strong aria-hidden="true">4.3.</strong> Week 3: Stability and UI</a></li><li class="chapter-item expanded "><a href="implementation/week_4_audio_and_rendering.html"><strong aria-hidden="true">4.4.</strong> Week 4: Audio and Rendering</a></li><li class="chapter-item expanded "><a href="implementation/week_5_tidying.html"><strong aria-hidden="true">4.5.</strong> Week 5: Tidying</a></li><li class="chapter-item expanded "><a href="implementation/week_6_fin_ack.html"><strong aria-hidden="true">4.6.</strong> Week 6: Fin Ack</a></li></ol></li><li class="chapter-item expanded "><a href="issue_summary.html" class="active"><strong aria-hidden="true">5.</strong> Issue Summary</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">WASM Rush</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#issue-summary" id="issue-summary">Issue Summary</a></h1>
+<table><thead><tr><th>Item</th><th>Crate(s)</th><th>WASM Rush links</th><th>Upstream Status</th></tr></thead><tbody>
+<tr><td><code>Event</code>s must be <code>Clone</code></td><td><code>winit</code>, <code>amethyst</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2211">#2211</a>, <a href="https://github.com/amethyst/amethyst/pull/2040">#2040</a></td><td>❌ <a href="https://github.com/rust-windowing/winit/pull/1478">#1478</a></td></tr>
+<tr><td><code>rendy</code> to use <code>gfx-hal 0.5</code></td><td><code>rendy</code>, <code>amethyst_rendy</code></td><td><a href="https://github.com/amethyst/rendy/commits/wasm">rendy:wasm</a>, <a href="https://github.com/amethyst/amethyst/pull/2198">#2198</a></td><td>❌ <a href="https://github.com/amethyst/rendy/issues/275">#275</a>, <a href="https://github.com/amethyst/rendy/pull/277">#277</a></td></tr>
+<tr><td>WASM: parallel dispatch</td><td><code>amethyst</code>, <code>web_worker</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2177">#2177</a>, <a href="https://github.com/amethyst/amethyst/pull/2189">#2189</a></td><td>❌ <a href="https://github.com/amethyst/amethyst/issues/2191">#2191</a></td></tr>
+<tr><td>Load assets asynchronously</td><td><code>amethyst_assets</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2180">#2180</a>, <a href="https://github.com/amethyst/amethyst/pull/2182">#2182</a></td><td>❌ <a href="https://github.com/amethyst/amethyst/issues/2228">#2228</a></td></tr>
+<tr><td>Load textures as thread local</td><td><code>amethyst_rendy</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2174">#2174</a></td><td>✔️ <a href="https://github.com/amethyst/amethyst/pull/2198">#2198</a></td></tr>
+<tr><td><code>winit</code> double borrow mut</td><td><code>winit</code></td><td><a href="https://github.com/amethyst/winit/commit/4fbf95b7ccf8ae9d3970e75d74c8f735f22e1a72"><code>4fbf95b</code></a></td><td>✔️ <a href="https://github.com/rust-windowing/winit/pull/1512">#1512</a></td></tr>
+<tr><td><code>winit::requestAnimationFrame</code></td><td><code>winit</code></td><td><a href="https://github.com/amethyst/winit/commit/3d5274b9ccf0a6212cda3b01d058000f2555bfec"><code>3d5274b</code></a></td><td>✔️ <a href="https://github.com/rust-windowing/winit/issues/1493">#1493</a>, <a href="https://github.com/rust-windowing/winit/pull/1519">#1519</a></td></tr>
+<tr><td>Use user provided <code>&lt;canvas&gt;</code></td><td><code>rendy</code>, <code>amethyst_rendy</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2202">#2202</a>, <a href="https://github.com/amethyst/rendy/commit/48915cb29940dfaf4066a1ff9d148426defb9879"><code>48915cb</code></a>, <a href="https://github.com/amethyst/pong_wasm/pull/1">#1</a></td><td>❓</td></tr>
+<tr><td>Use same shader variable names</td><td><code>amethyst_ui</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2205">#2205</a>, <a href="https://github.com/amethyst/amethyst/pull/2207">#2207</a></td><td>✔️</td></tr>
+<tr><td><code>winit</code> drag-n-drop optional</td><td><code>winit</code></td><td><a href="https://github.com/amethyst/winit/commit/a2eea3e9a79c33b1c821e89c38782fc5788b77f7"><code>a2eea3e</code></a></td><td>❌ <a href="https://github.com/rust-windowing/winit/pull/1524">#1524</a></td></tr>
+<tr><td>Clear GL depth buffer</td><td><code>gfx-hal</code></td><td><a href="https://github.com/amethyst/gfx/commit/35c45acb43eebf989d06ba34141e43738d77b991"><code>35c45ac</code></a></td><td>✔️ <a href="https://github.com/gfx-rs/gfx/issues/3202">#3202</a>, <a href="https://github.com/gfx-rs/gfx/pull/3205">#3205</a></td></tr>
+<tr><td>Load <code>Rgb8Srgb</code> texture format</td><td><code>gfx-hal</code></td><td><a href="https://github.com/amethyst/gfx/commit/c4b75d3d17f2fad7bd7ea93c8be8a92a6329d972"><code>c4b75d3</code></a></td><td>✔️ <a href="https://github.com/gfx-rs/gfx/issues/3222">#3222</a>, <a href="https://github.com/gfx-rs/gfx/pull/3223">#3223</a></td></tr>
+<tr><td>Proper <code>AudioSocket</code> support</td><td><code>cpal</code></td><td><a href="https://github.com/amethyst/cpal/commit/ee1ee1a957ec6b0f761dd2568ec487e33619ffbc"><code>ee1ee1a</code></a>, <a href="https://github.com/amethyst/amethyst/issues/2195">#2195</a>, <a href="https://github.com/amethyst/amethyst/pull/2219">#2219</a>, <a href="https://github.com/amethyst/pong_wasm/pull/3">#3</a></td><td>❌ <a href="https://github.com/RustAudio/cpal/pull/372">#372</a>, <a href="https://github.com/amethyst/amethyst/issues/2222">#2222</a></td></tr>
+<tr><td>Load configuration from server</td><td><code>amethyst</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2214">#2214</a>, <a href="https://github.com/amethyst/pong_wasm/pull/4">#4</a></td><td>❌</td></tr>
+<tr><td>Integration test support</td><td><code>amethyst_test</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2241">#2241</a>, <a href="https://github.com/azriel91/autexousious/issues/222">#222</a>, <a href="https://github.com/azriel91/autexousious/pull/223">#223</a></td><td>✔️ <a href="https://github.com/amethyst/amethyst/pull/2240">#2240</a>, <a href="https://github.com/amethyst/amethyst/pull/2245">#2245</a></td></tr>
+<tr><td>Configurable web logger</td><td><code>console_log</code>, <code>amethyst</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2249">#2249</a>, <a href="https://github.com/amethyst/amethyst/pull/2250">#2250</a></td><td>✔️ <a href="https://github.com/iamcodemaker/console_log/pull/6">#6</a></td></tr>
+<tr><td>Overwritten canvas dimensions</td><td><code>gfx-hal</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2247">#2247</a>, <a href="https://github.com/amethyst/gfx/commit/8537dfbe5ef742309496b7282a07653fc88f037d"><code>8537dfb</code></a></td><td>✔️ <a href="https://github.com/gfx-rs/gfx/issues/3224">#3224</a>, <a href="https://github.com/gfx-rs/gfx/pull/3225">#3225</a></td></tr>
+<tr><td><code>WebSocket</code> transport layer</td><td><code>amethyst_network</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2251">#2251</a>, <a href="https://github.com/azriel91/autexousious/issues/209">#209</a>, <a href="https://github.com/azriel91/autexousious/pull/221">#221</a></td><td>✔️ <a href="https://github.com/amethyst/amethyst/pull/2253">#2253</a></td></tr>
+</tbody></table>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="implementation/week_6_fin_ack.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="implementation/week_6_fin_ack.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

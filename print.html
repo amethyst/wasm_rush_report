@@ -1,0 +1,663 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>WASM Rush</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="initial_state.html"><strong aria-hidden="true">2.</strong> Initial State</a></li><li class="chapter-item expanded "><a href="plan.html"><strong aria-hidden="true">3.</strong> Plan</a></li><li class="chapter-item expanded "><a href="implementation.html"><strong aria-hidden="true">4.</strong> Implementation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="implementation/week_1_contribution_baseline.html"><strong aria-hidden="true">4.1.</strong> Week 1: Contribution Baseline</a></li><li class="chapter-item expanded "><a href="implementation/week_2_end_to_end_discovery.html"><strong aria-hidden="true">4.2.</strong> Week 2: End-to-End Discovery</a></li><li class="chapter-item expanded "><a href="implementation/week_3_stability_and_ui.html"><strong aria-hidden="true">4.3.</strong> Week 3: Stability and UI</a></li><li class="chapter-item expanded "><a href="implementation/week_4_audio_and_rendering.html"><strong aria-hidden="true">4.4.</strong> Week 4: Audio and Rendering</a></li><li class="chapter-item expanded "><a href="implementation/week_5_tidying.html"><strong aria-hidden="true">4.5.</strong> Week 5: Tidying</a></li><li class="chapter-item expanded "><a href="implementation/week_6_fin_ack.html"><strong aria-hidden="true">4.6.</strong> Week 6: Fin Ack</a></li></ol></li><li class="chapter-item expanded "><a href="issue_summary.html"><strong aria-hidden="true">5.</strong> Issue Summary</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">WASM Rush</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
+<p>This is the report of the initial effort to add Web Assembly (WASM) support to the Amethyst game engine.</p>
+<p>Feel free to refer to this to learn from our experience.</p>
+<p>Report accurate as of 2020-04-25.</p>
+<h1><a class="header" href="#initial-state" id="initial-state">Initial State</a></h1>
+<p>Before beginning any implementation work, some <em>scout</em> work was done to collate existing information from pre-existing attempts. The summary from each attempt is listed below.</p>
+<h3><a class="header" href="#jojolepro--a-hrefhttpsgithubcomjojoleproamethysttreewasmamethystwasma" id="jojolepro--a-hrefhttpsgithubcomjojoleproamethysttreewasmamethystwasma">Jojolepro – <a href="https://github.com/jojolepro/amethyst/tree/wasm">amethyst:wasm</a></a></h3>
+<details>
+<summary>Attempt at getting `amethyst` to compile with `wasm-bindgen`.</summary>
+<ul>
+<li>Top down approach – try to get <code>amethyst</code> to compile for wasm with minimal features, then incrementally enable crates.</li>
+<li>Partial update of winit to 0.21.</li>
+<li>Places crates / code behind feature toggles.</li>
+</ul>
+<p>Relevant commits:</p>
+<ul>
+<li>
+<p><a href="https://github.com/jojolepro/amethyst/commit/f6dd55e40745a6bac10d7ad70235e3fe8f253569"><code>f6dd55e4</code></a></p>
+<ul>
+<li>
+<p>removes <code>backtrace</code> from <code>amethyst_error</code></p>
+</li>
+<li>
+<p>places the following crates under a feature flag in <code>Cargo.toml</code>:</p>
+<ul>
+<li>amethyst_controls</li>
+<li>amethyst_input</li>
+<li>amethyst_ui</li>
+<li>amethyst_utils</li>
+<li>amethyst_window</li>
+<li>winit</li>
+<li>failure</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://github.com/jojolepro/amethyst/commit/2c9a78f201716d6c0f2f6bf2de727d749efa1ede"><code>2c9a78f2</code></a>: adds <code>#[cfg(feature = &quot;renderer&quot;)]</code> in main <code>amethyst</code> crate.</p>
+</li>
+<li>
+<p><a href="https://github.com/jojolepro/amethyst/commit/ebeec5fbeff47be5efd23737f6ef9aecb42b9d26"><code>ebeec5fb</code></a></p>
+<ul>
+<li>
+<p>Bumps <code>winit</code> to <code>0.21</code> and updates features.</p>
+</li>
+<li>
+<p>Puts the following behind feature flags:</p>
+<ul>
+<li><code>amethyst_audio</code></li>
+<li><code>amethyst_ui</code></li>
+</ul>
+</li>
+<li>
+<p>Removes <code>#[cfg(feature = &quot;renderer&quot;)]</code> from <code>src/app.rs:30</code></p>
+</li>
+</ul>
+</li>
+</ul>
+</details>
+<h3><a class="header" href="#semtexv--a-hrefhttpsgithubcomsemtexzvamethystcommitsrendy-allamethystrendy-alla-based-on-a-hrefhttpsgithubcomamethystamethystpull20402040a" id="semtexv--a-hrefhttpsgithubcomsemtexzvamethystcommitsrendy-allamethystrendy-alla-based-on-a-hrefhttpsgithubcomamethystamethystpull20402040a">Semtexv – <a href="https://github.com/semtexzv/amethyst/commits/rendy-all"><code>amethyst:rendy-all</code></a> (based on <a href="https://github.com/amethyst/amethyst/pull/2040">#2040</a>)</a></h3>
+<details>
+<summary>Updates `amethyst` to use `winit 0.21` and `rendy 0.5`.</summary>
+<p>Summary:</p>
+<ul>
+<li>Updates winit to 0.21, including <code>Event</code> and screen logical / physical size changes.</li>
+<li>Updates rendy to 0.5.1.</li>
+<li>Updates most (all?) examples to properly run with <code>winit</code>'s new event loop mechanism.</li>
+</ul>
+<p>Interesting diff:</p>
+<pre><code class="language-rust ignore">/// # Examples
+///
+/// ~~~no_run
+/// let event_loop = EventLoop::new();
+/// let mut game = Application::new(assets_dir, Example::new(), game_data)?;
+/// game.initialize();
+/// event_loop.run(move |event, _, control_flow| {
+///     #[cfg(feature = &quot;profiler&quot;)]
+///     profile_scope!(&quot;run_event_loop&quot;);
+///     log::trace!(&quot;main loop run&quot;);
+///     game.run_winit_loop(event, control_flow)
+/// })
+/// ~~~
+</code></pre>
+</details>
+<h3><a class="header" href="#omni-viral--a-hrefhttpsgithubcomomni-viralamethysttreeglamethystgla-pr-a-hrefhttpsgithubcomamethystamethystpull18771877a" id="omni-viral--a-hrefhttpsgithubcomomni-viralamethysttreeglamethystgla-pr-a-hrefhttpsgithubcomamethystamethystpull18771877a">Omni-viral – <a href="https://github.com/omni-viral/amethyst/tree/gl"><code>amethyst:gl</code></a> (PR <a href="https://github.com/amethyst/amethyst/pull/1877">#1877</a>)</a></h3>
+<details>
+<summary>The first attempt that compiled and ran.</summary>
+<ul>
+<li>
+<p>Updates winit to <code>0.20.0-alpha2</code>.</p>
+</li>
+<li>
+<p>Disables the following crates:</p>
+<ul>
+<li><code>amethyst_audio</code></li>
+<li><code>amethyst_network</code></li>
+</ul>
+<p>Also for <code>amethyst_gltf</code>:</p>
+<ul>
+<li><code>mikktspace</code></li>
+</ul>
+</li>
+<li>
+<p>Removes usage of <code>rayon::ThreadPool</code>.</p>
+</li>
+<li>
+<p>Changes shader compilation script, and recompiles all shaders.</p>
+</li>
+</ul>
+</details>
+<h3><a class="header" href="#jojolepro--a-hrefhttpsgithubcomjojoleproweb_workerweb_workera" id="jojolepro--a-hrefhttpsgithubcomjojoleproweb_workerweb_workera">Jojolepro – <a href="https://github.com/jojolepro/web_worker"><code>web_worker</code></a></a></h3>
+<p>Allows <code>rayon::ThreadPool</code> to be used by using a custom constructor.</p>
+<h3><a class="header" href="#jaynus--a-hrefhttpsgithubcomjaynusrendycommitsjaynus-fixesrendyjaynus-fixesa" id="jaynus--a-hrefhttpsgithubcomjaynusrendycommitsjaynus-fixesrendyjaynus-fixesa">Jaynus – <a href="https://github.com/jaynus/rendy/commits/jaynus-fixes"><code>rendy:jaynus-fixes</code></a></a></h3>
+<ul>
+<li>Bumps <code>gfx-hal</code> to latest git master as of March 11, 2020</li>
+<li>Compiles <code>rendy/rendy</code> examples to WASM using <code>wasm-bindgen</code></li>
+</ul>
+<h1><a class="header" href="#plan" id="plan">Plan</a></h1>
+<p>Because a game engine covers many complex domains -- event loop, audio, graphics, etcetera -- we want to make sure there is a &quot;good&quot; starting state, and be able to develop and test each domain independently. In addition, we want to encourage contribution from the community where possible.</p>
+<h2><a class="header" href="#jump-start" id="jump-start">Jump Start</a></h2>
+<p>The plan to create a stable equilibrium used is:</p>
+<ol>
+<li>Get <code>amethyst</code> to compile for the <code>wasm32-unknown-unknown</code> target.</li>
+<li>Set up an end-to-end project to test usage of <code>amethyst</code>.</li>
+<li>Set up automated build to ensure all contributions maintain that base quality check.</li>
+<li>Make it easier for potential contributors to get into the &quot;build, test, contribute&quot; loop.</li>
+</ol>
+<h2><a class="header" href="#equilibrium" id="equilibrium">Equilibrium</a></h2>
+<p>There are two workflows for ongoing development:</p>
+<ul>
+<li>
+<p>Discovery</p>
+<ol>
+<li>Run end-to-end project to discover issues.</li>
+<li>Open a GitHub issue for each issue, providing any stack traces or screenshots, and the expected behaviour for the resolution of the issue.</li>
+<li>Provide some initial investigation to where the root cause of the problem lies, to make it easier to begin working on a fix.</li>
+</ol>
+</li>
+<li>
+<p>Implementation</p>
+<ol>
+<li>Contributor finds an issue they wish to do.</li>
+<li>Locally, the contributor implements a fix, and tests it against end-to-end project.</li>
+<li>The change is submitted for review, and amended if necessary.</li>
+<li>After passing review and the automated build, the contribution is merged.</li>
+</ol>
+</li>
+</ul>
+<h1><a class="header" href="#implementation" id="implementation">Implementation</a></h1>
+<p>This section covers the WASM support implementation in chronological (time) order.</p>
+<blockquote>
+<p>ℹ️ <strong>Note:</strong> There is no design process as we are simply adding WASM support to existing functionality, or gating features as unsupported by WASM.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Week 1: Contribution Baseline</strong> – Preparation of repositories and guidelines.</p>
+</li>
+<li>
+<p><strong>Week 2: End-to-End Discovery</strong> – Event loop execution and first successful run of Pong.</p>
+</li>
+<li>
+<p><strong>Week 3: Stability and UI</strong> – WASM memory fix and UI rendering correction.</p>
+</li>
+<li>
+<p><strong>Week 4: Audio and Rendering</strong> – Audio playback and rendering fixes on Windows.</p>
+</li>
+<li>
+<p><strong>Week 5: Tidying</strong> – Input loading and automated testing with GL.</p>
+</li>
+<li>
+<p><strong>Week 6: Fin Ack</strong> – Web sockets, logging, and UI rendering correction.</p>
+</li>
+</ul>
+<h1><a class="header" href="#week-1-contribution-baseline" id="week-1-contribution-baseline">Week 1: Contribution Baseline</a></h1>
+<h2><a class="header" href="#summary" id="summary">Summary</a></h2>
+<p><strong>Date:</strong> 2020-03-16 to 2020-03-21</p>
+<ul>
+<li>Amethyst compiles to a WASM library.</li>
+<li>Repository forks and branches are created.</li>
+<li>Contribution guide is written.</li>
+<li>Basic CI check is set up.</li>
+</ul>
+<table><thead><tr><th>Repository</th><th>Commit Range</th></tr></thead><tbody>
+<tr><td><a href="https://github.com/amethyst/pong_wasm"><code>pong_wasm</code></a></td><td><code>9b403f69^..9f6240fe</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/amethyst/commits/wasm"><code>amethyst</code></a></td><td><code>8044b2a5^..0af12f84</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/rendy/commits/wasm"><code>rendy</code></a></td><td><code>27e5cdc1^..757c4aa9</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/glutin/commits/wasm"><code>glutin</code></a> (fork)</td><td><code>f29d87a3</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/gfx/commits/wasm"><code>gfx-rs</code></a> (fork)</td><td><code>3e6db5f0</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/winit/commits/wasm"><code>winit</code></a> (fork)</td><td><code>26e4374a^..04225a39</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/builder/pull/9/files"><code>builder</code></a> (CI agent)</td><td><code>13730efd^..2bb67aae</code></td></tr>
+</tbody></table>
+<h3><a class="header" href="#end-result" id="end-result">End Result</a></h3>
+<pre><code class="language-bash">$ wasm-pack build -- --features &quot;wasm gl&quot;
+# ..
+[INFO]: :-) Done in 37.87s
+[INFO]: :-) Your wasm pkg is ready to publish at ./pkg.
+</code></pre>
+<h2><a class="header" href="#implementation-1" id="implementation-1">Implementation</a></h2>
+<p>Based off the <a href="https://github.com/amethyst/amethyst/pull/2040"><code>#2040</code></a> branch, which has the changes to use the new <code>winit</code> <a href="https://github.com/rust-windowing/winit/blob/master/CHANGELOG.md#0200-alpha-1-2019-06-21">event loop</a> introduced in <code>winit 0.20.0</code>.</p>
+<ol>
+<li>
+<p>Get amethyst to compile with <code>winit 0.22.0</code> for better WASM support. (<a href="https://github.com/rust-windowing/winit/pull/1478">winit#1478</a>)</p>
+</li>
+<li>
+<p>Attempt to compile amethyst with <code>wasm-pack</code>.</p>
+<p>Instructions from <a href="https://rustwasm.github.io/docs/book/">https://rustwasm.github.io/docs/book/</a> were followed to package the library.</p>
+<p>When building with:</p>
+<pre><code class="language-bash">wasm-pack build --target no-modules -- --features &quot;wasm gl&quot;
+</code></pre>
+<ul>
+<li>
+<p>If it fails due to usage of a <code>-sys</code> library, feature gate the dependency and the code that uses it.</p>
+</li>
+<li>
+<p>If it fails and requires a code change:</p>
+<ol>
+<li>Fork the repository.</li>
+<li>Create a <code>wasm</code> branch.</li>
+<li>Amend the code.</li>
+<li>Point <code>amethyst</code> at the forked repository.</li>
+<li>Make a pull request back to the original repository.</li>
+</ol>
+</li>
+</ul>
+<p>Repeat until <code>wasm-pack</code> succeeds.</p>
+</li>
+<li>
+<p>Create end-to-end application, and make sure it compiles: <a href="https://github.com/amethyst/pong_wasm"><code>pong_wasm</code></a>.</p>
+</li>
+<li>
+<p>Write <a href="https://github.com/amethyst/amethyst/blob/wasm/docs/CONTRIBUTING_WASM.md">contribution guidelines</a>. (<a href="https://github.com/amethyst/amethyst/issues/2171">amethyst#2171</a>)</p>
+<p>Make it easy:</p>
+<ul>
+<li>Links to all forks and branches.</li>
+<li>Cut and paste commands.</li>
+<li>Setup and development instructions.</li>
+</ul>
+</li>
+<li>
+<p>Create <a href="https://github.com/amethyst/amethyst/commit/76644f5ab4f6e9588f4e9ef91f92bea525c59446#diff-58231b16fdee45a03a4ee3cf94a9f2c3">CI job</a> to build amethyst as a WASM library. (<a href="https://github.com/amethyst/amethyst/issues/2175">amethyst#2175</a>)</p>
+<p><strong>Note:</strong> <a href="https://github.com/amethyst/builder/pull/9/files">CI agent</a> needs <code>wasm32-unknown-unknown</code> target, and <code>rust-src</code> component.</p>
+</li>
+<li>
+<p>Publicise the WASM effort on the <a href="https://community.amethyst.rs/t/wasm-effort/1336">community forum</a> and <a href="https://discord.gg/amethyst">chat server</a>.</p>
+</li>
+</ol>
+<h1><a class="header" href="#week-2-end-to-end-discovery" id="week-2-end-to-end-discovery">Week 2: End-to-End Discovery</a></h1>
+<h2><a class="header" href="#summary-1" id="summary-1">Summary</a></h2>
+<p><strong>Date:</strong> 2020-03-22 to 2020-03-28</p>
+<ul>
+<li>
+<p>Limitations discovered around:</p>
+<ul>
+<li><code>winit</code> event loop and WASM event loop requirements.</li>
+<li>Web worker threading requirements.</li>
+<li>Audio loading requirements.</li>
+<li>Texture loading requirements.</li>
+</ul>
+</li>
+<li>
+<p>Assets load from HTTP source using XHRs.</p>
+</li>
+</ul>
+<table><thead><tr><th>Repository</th><th>Commit Range</th></tr></thead><tbody>
+<tr><td><a href="https://github.com/amethyst/pong_wasm"><code>pong_wasm</code></a></td><td><code>3bcf94de^..de355df6</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/amethyst/commits/wasm"><code>amethyst</code></a></td><td><code>65a1e27a^..1d491d18</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/rendy/commits/wasm"><code>rendy</code></a></td><td><code>e1e03fee^..4de9ca2a</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/winit/commits/wasm"><code>winit</code></a> (fork)</td><td><code>8595aec7^..9827b34a</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/gfx/commits/wasm"><code>gfx-rs</code></a> (fork)</td><td><code>a9a4419d^..672f551a</code></td></tr>
+<tr><td><a href="https://github.com/amethyst/web_worker"><code>web_worker</code></a></td><td><code>892abf29^..2b78b6ca</code></td></tr>
+</tbody></table>
+<h3><a class="header" href="#end-result-1" id="end-result-1">End Result</a></h3>
+<p><img src="implementation/pong_crash_screenshot.png" alt="" /></p>
+<h2><a class="header" href="#implementation-2" id="implementation-2">Implementation</a></h2>
+<ol>
+<li>
+<p>Clean up <a href="https://github.com/amethyst/web_worker"><code>web_worker</code></a> repository.</p>
+<ul>
+<li>Move <code>jojolepro/web_worker</code> to <code>amethyst/web_worker</code></li>
+<li>Allow constructing thread pool without JavaScript (workers still need <code>worker.js</code> to run).</li>
+</ul>
+</li>
+<li>
+<p>Get dispatcher to execute serially – <code>&quot;no-parallel&quot;</code>. (<a href="https://github.com/amethyst/amethyst/issues/2177">amethyst#2177</a>, <a href="https://github.com/amethyst/amethyst/pull/2189">amethyst#2189</a>, <a href="https://github.com/amethyst/amethyst/issues/2191">amethyst#2191</a>)</p>
+</li>
+<li>
+<p>Assets load from server via <code>XmlHttpRequest</code>s. (<a href="https://github.com/amethyst/amethyst/issues/2180">amethyst#2180</a>)</p>
+<ul>
+<li>Loading texture assets into GL backend. (<a href="https://github.com/amethyst/amethyst/issues/2174">amethyst#2174</a>)</li>
+</ul>
+</li>
+<li>
+<p>Get GL to render correctly. (<a href="https://github.com/amethyst/amethyst/pull/2198">amethyst#2198</a>)</p>
+</li>
+<li>
+<p>Update <code>pong_wasm</code> to run. (<a href="https://github.com/amethyst/pong_wasm/commit/3bcf94def66cc771fab454da76de910e48630a98">pong_wasm#3bcf94d</a>)</p>
+</li>
+</ol>
+<h1><a class="header" href="#week-3-stability-and-ui" id="week-3-stability-and-ui">Week 3: Stability and UI</a></h1>
+<h2><a class="header" href="#summary-2" id="summary-2">Summary</a></h2>
+<p><strong>Date:</strong> 2020-03-29 to 2020-04-04</p>
+<ul>
+<li>UI pass works</li>
+<li>WASM app doesn't crash 90% of the time from double mutable borrow in winit.</li>
+</ul>
+<h3><a class="header" href="#end-result-2" id="end-result-2">End Result</a></h3>
+<p><img src="implementation/pong_move.gif" alt="" /></p>
+<h2><a class="header" href="#implementation-3" id="implementation-3">Implementation</a></h2>
+<ol>
+<li>
+<p>Winit stability fixes.</p>
+<ul>
+<li>Fix double borrow mut. (<a href="https://github.com/amethyst/winit/commit/4fbf95b7ccf8ae9d3970e75d74c8f735f22e1a72">amethyst/winit#4fbf95b</a>, <a href="https://github.com/rust-windowing/winit/pull/1512">winit#1512</a>)</li>
+<li>Add <code>requestAnimationFrame</code> support to <code>winit</code>. (<a href="https://github.com/amethyst/winit/commit/3d5274b9ccf0a6212cda3b01d058000f2555bfec">amethyst/winit#3d5274b</a>, <a href="https://github.com/rust-windowing/winit/issues/1493">winit#1493</a>, <a href="https://github.com/rust-windowing/winit/pull/1519">winit#1519</a>)</li>
+</ul>
+</li>
+<li>
+<p>Take in HTML <code>&lt;canvas&gt;</code> element from user. (<a href="https://github.com/amethyst/amethyst/issues/2202">amethyst#2202</a>, <a href="https://github.com/amethyst/rendy/commit/48915cb29940dfaf4066a1ff9d148426defb9879">rendy#48915cb</a>, <a href="https://github.com/amethyst/pong_wasm/pull/1">pong_wasm#1</a>)</p>
+<ul>
+<li>Update to <code>gfx-hal 0.5</code>.</li>
+<li>Don't invert coordinate system. (<a href="https://github.com/amethyst/rendy/commit/5d100845cdae0b187e618bf3e8d130c21aeb2418">rendy#5d10084</a>)</li>
+</ul>
+</li>
+<li>
+<p>Fixed UI pass by using consistent shader variable names. (<a href="https://github.com/amethyst/amethyst/issues/2205">amethyst#2205</a>, <a href="https://github.com/amethyst/amethyst/pull/2207">amethyst#2207</a>)</p>
+</li>
+</ol>
+<h1><a class="header" href="#week-4-audio-and-rendering" id="week-4-audio-and-rendering">Week 4: Audio and Rendering</a></h1>
+<h2><a class="header" href="#summary-3" id="summary-3">Summary</a></h2>
+<p><strong>Date:</strong> 2020-04-05 to 2020-04-11</p>
+<ul>
+<li>GL depth buffer fix -- rendering is corrected on Windows.</li>
+<li>Audio plays in WASM, albeit delayed.</li>
+</ul>
+<h3><a class="header" href="#end-result-3" id="end-result-3">End Result</a></h3>
+<p><video controls><source src="2020-04-09_pong_wasm_audio.mp4" /></video></p>
+<h2><a class="header" href="#implementation-4" id="implementation-4">Implementation</a></h2>
+<ol>
+<li>
+<p>Split audio logic from other systems. (<a href="https://github.com/amethyst/amethyst/issues/2215">amethyst#2215</a>, <a href="https://github.com/amethyst/amethyst/issues/2216">amethyst#2216</a>, <a href="https://github.com/amethyst/pong_wasm/pull/2">pong_wasm#2</a>)</p>
+<p>This allows the rest of Pong to run even if audio is disabled.</p>
+</li>
+<li>
+<p>Initialization stability on Windows:</p>
+<p>Make drag and drop <code>winit</code> feature optional. (<a href="https://github.com/amethyst/winit/commit/a2eea3e9a79c33b1c821e89c38782fc5788b77f7">amethyst/winit#a2eea3e</a>, <a href="https://github.com/rust-windowing/winit/pull/1524">winit#1524</a>)</p>
+</li>
+<li>
+<p>Fixed <code>gfx</code> issues.</p>
+<ul>
+<li>Clear GL depth buffer. (<a href="https://github.com/amethyst/gfx/commit/35c45acb43eebf989d06ba34141e43738d77b991">gfx#35c45ac</a>, <a href="https://github.com/gfx-rs/gfx/issues/3202">gfx#3202</a>, <a href="https://github.com/gfx-rs/gfx/pull/3205">gfx#3205</a>)</li>
+<li>Load <code>Rgb8Srgb</code> texture format. (<a href="https://github.com/amethyst/gfx/commit/c4b75d3d17f2fad7bd7ea93c8be8a92a6329d972">gfx#c4b75d3</a>, <a href="https://github.com/gfx-rs/gfx/issues/3222">gfx#3222</a>, <a href="https://github.com/gfx-rs/gfx/pull/3223">gfx#3223</a>)</li>
+</ul>
+</li>
+<li>
+<p>Get audio to play on WASM.</p>
+<ul>
+<li>Use <a href="https://github.com/ishitatsuyuki/cpal/tree/dpeckett-webaudio-poc">ishitatsuyuki/cpal#dpeckett-webaudio-poc</a>, which is based off wasm-bindgen POC by <code>dpeckett</code>. (<a href="https://github.com/amethyst/cpal/commit/ee1ee1a957ec6b0f761dd2568ec487e33619ffbc">amethyst/cpal#ee1ee1a</a>, <a href="https://github.com/RustAudio/cpal/pull/372">cpal#372</a>)</li>
+<li>Send audio through <code>AudioBuffer</code> in JavaScript. (<a href="https://github.com/amethyst/amethyst/issues/2195">amethyst#2195</a>, <a href="https://github.com/amethyst/amethyst/pull/2219">amethyst#2219</a>)</li>
+<li>Use <code>sed</code> hack to allow web workers to be instantiated without an <code>AudioContext</code>. (<a href="https://github.com/amethyst/pong_wasm/pull/3">pong_wasm#3</a>)</li>
+</ul>
+</li>
+</ol>
+<h1><a class="header" href="#week-5-tidying" id="week-5-tidying">Week 5: Tidying</a></h1>
+<h2><a class="header" href="#summary-4" id="summary-4">Summary</a></h2>
+<p><strong>Date:</strong> 2020-04-12 to 2020-04-18</p>
+<ul>
+<li>
+<p>Input configuration loads from server.</p>
+</li>
+<li>
+<p><code>amethyst_test</code> updated to work with winit 0.22.0 event loop.</p>
+<p>Tests that require a graphical backend can run on CI without dedicated graphics cards by using the software GL rendering backend -- tests can be run through XVFB.</p>
+</li>
+</ul>
+<h3><a class="header" href="#end-result-4" id="end-result-4">End Result</a></h3>
+<p><img src="implementation/week_5_ci_gl_tests.png" alt="" /></p>
+<h2><a class="header" href="#implementation-5" id="implementation-5">Implementation</a></h2>
+<ol>
+<li>
+<p>Load input configuration from server using JavaScript. (<a href="https://github.com/amethyst/amethyst/issues/2214">amethyst#2214</a>, <a href="https://github.com/amethyst/pong_wasm/pull/4">pong_wasm#4</a>)</p>
+<p>This is simply a <code>fetch</code> invocation. For better UX, we should:</p>
+<ol>
+<li>Initialize the fetch from within the application</li>
+<li>Return control to the browser so that it is responsive, and indicate to the user that a resource is being fetched, such as by rendering a spinner.</li>
+<li>Resume application initialization after the fetch has returned.</li>
+</ol>
+</li>
+<li>
+<p>Remove requirement to specify <code>shred</code> in crate <code>[patch]</code> section. (<a href="https://github.com/amethyst/amethyst/pull/2238">amethyst#2238</a>)</p>
+</li>
+<li>
+<p>Update <code>amethyst_test</code> framework to work with new <code>winit</code>.</p>
+<ul>
+<li>Expose API function for bundles needing the <code>EventLoop</code> to be built. (<a href="https://github.com/amethyst/amethyst/pull/2240">amethyst#2240</a>)</li>
+<li>Allow multiple <code>winit</code> event loops to run in sub threads. (<a href="https://github.com/amethyst/amethyst/issues/2241">amethyst#2241</a>, <a href="https://github.com/amethyst/amethyst/pull/2245">amethyst#2245</a>, <a href="https://github.com/azriel91/autexousious/issues/222">autexousious#222</a>, <a href="https://github.com/azriel91/autexousious/pull/223">autexousious#223</a>)</li>
+</ul>
+</li>
+</ol>
+<h1><a class="header" href="#week-6-fin-ack" id="week-6-fin-ack">Week 6: Fin Ack</a></h1>
+<h2><a class="header" href="#summary-5" id="summary-5">Summary</a></h2>
+<p><strong>Date:</strong> 2020-04-19 to 2020-04-25</p>
+<ul>
+<li>UI Coordinates / Screen Dimensions correction</li>
+<li>Configurable Web Logger</li>
+<li>Net Server and Client</li>
+</ul>
+<h3><a class="header" href="#end-result-5" id="end-result-5">End Result</a></h3>
+<div><iframe width="750" height="422" src="https://www.youtube.com/embed/Hc8EtqrlJsE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<h2><a class="header" href="#implementation-6" id="implementation-6">Implementation</a></h2>
+<ol>
+<li>
+<p>Allow web logger to be configured. (<a href="https://github.com/amethyst/amethyst/issues/2249">amethyst#2249</a>, <a href="https://github.com/amethyst/amethyst/pull/2250">amethyst#2250</a>, <a href="https://github.com/iamcodemaker/console_log/pull/6">console_log#6</a>)</p>
+<p>This was necessary as the rate of log messages was about 1000 messages per second. This meant:</p>
+<ul>
+<li>Filtering for relevant log messages was extremely difficult.</li>
+<li>The browser would lag and be unusable to work with.</li>
+</ul>
+</li>
+<li>
+<p>Set canvas width/height only if unset. (<a href="https://github.com/amethyst/amethyst/issues/2247">amethyst#2247</a>, <a href="https://github.com/amethyst/gfx/commit/8537dfbe5ef742309496b7282a07653fc88f037d">amethyst/gfx#8537dfb</a>, <a href="https://github.com/gfx-rs/gfx/issues/3224">gfx#3224</a>, <a href="https://github.com/gfx-rs/gfx/pull/3225">gfx#3225</a>)</p>
+<p>Quirk in this bug fix is, when setting the <code>&quot;width&quot;</code> attribute on the <code>&lt;canvas&gt;</code> element, the next read of <code>width()</code> still returns the old value. However, the updated value is returned after interacting with the canvas' WebGL2 graphics context.</p>
+</li>
+<li>
+<p>Provide <code>WebSocket</code> transport layer implementation for <code>amethyst_network</code>. (<a href="https://github.com/amethyst/amethyst/issues/2251">amethyst#2251</a>, <a href="https://github.com/amethyst/amethyst/pull/2253">amethyst#2253</a>, <a href="https://github.com/azriel91/autexousious/issues/209">autexousious#209</a>, <a href="https://github.com/azriel91/autexousious/pull/221">autexousious#221</a>)</p>
+<ul>
+<li>Use <a href="https://crates.io/crates/tungstenite"><code>tungstenite</code></a> for native targets.</li>
+<li>Use <code>web-sys::WebSocket</code> for <code>wasm32-unknown-unknown</code> target.</li>
+</ul>
+</li>
+</ol>
+<h1><a class="header" href="#issue-summary" id="issue-summary">Issue Summary</a></h1>
+<table><thead><tr><th>Item</th><th>Crate(s)</th><th>WASM Rush links</th><th>Upstream Status</th></tr></thead><tbody>
+<tr><td><code>Event</code>s must be <code>Clone</code></td><td><code>winit</code>, <code>amethyst</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2211">#2211</a>, <a href="https://github.com/amethyst/amethyst/pull/2040">#2040</a></td><td>❌ <a href="https://github.com/rust-windowing/winit/pull/1478">#1478</a></td></tr>
+<tr><td><code>rendy</code> to use <code>gfx-hal 0.5</code></td><td><code>rendy</code>, <code>amethyst_rendy</code></td><td><a href="https://github.com/amethyst/rendy/commits/wasm">rendy:wasm</a>, <a href="https://github.com/amethyst/amethyst/pull/2198">#2198</a></td><td>❌ <a href="https://github.com/amethyst/rendy/issues/275">#275</a>, <a href="https://github.com/amethyst/rendy/pull/277">#277</a></td></tr>
+<tr><td>WASM: parallel dispatch</td><td><code>amethyst</code>, <code>web_worker</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2177">#2177</a>, <a href="https://github.com/amethyst/amethyst/pull/2189">#2189</a></td><td>❌ <a href="https://github.com/amethyst/amethyst/issues/2191">#2191</a></td></tr>
+<tr><td>Load assets asynchronously</td><td><code>amethyst_assets</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2180">#2180</a>, <a href="https://github.com/amethyst/amethyst/pull/2182">#2182</a></td><td>❌ <a href="https://github.com/amethyst/amethyst/issues/2228">#2228</a></td></tr>
+<tr><td>Load textures as thread local</td><td><code>amethyst_rendy</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2174">#2174</a></td><td>✔️ <a href="https://github.com/amethyst/amethyst/pull/2198">#2198</a></td></tr>
+<tr><td><code>winit</code> double borrow mut</td><td><code>winit</code></td><td><a href="https://github.com/amethyst/winit/commit/4fbf95b7ccf8ae9d3970e75d74c8f735f22e1a72"><code>4fbf95b</code></a></td><td>✔️ <a href="https://github.com/rust-windowing/winit/pull/1512">#1512</a></td></tr>
+<tr><td><code>winit::requestAnimationFrame</code></td><td><code>winit</code></td><td><a href="https://github.com/amethyst/winit/commit/3d5274b9ccf0a6212cda3b01d058000f2555bfec"><code>3d5274b</code></a></td><td>✔️ <a href="https://github.com/rust-windowing/winit/issues/1493">#1493</a>, <a href="https://github.com/rust-windowing/winit/pull/1519">#1519</a></td></tr>
+<tr><td>Use user provided <code>&lt;canvas&gt;</code></td><td><code>rendy</code>, <code>amethyst_rendy</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2202">#2202</a>, <a href="https://github.com/amethyst/rendy/commit/48915cb29940dfaf4066a1ff9d148426defb9879"><code>48915cb</code></a>, <a href="https://github.com/amethyst/pong_wasm/pull/1">#1</a></td><td>❓</td></tr>
+<tr><td>Use same shader variable names</td><td><code>amethyst_ui</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2205">#2205</a>, <a href="https://github.com/amethyst/amethyst/pull/2207">#2207</a></td><td>✔️</td></tr>
+<tr><td><code>winit</code> drag-n-drop optional</td><td><code>winit</code></td><td><a href="https://github.com/amethyst/winit/commit/a2eea3e9a79c33b1c821e89c38782fc5788b77f7"><code>a2eea3e</code></a></td><td>❌ <a href="https://github.com/rust-windowing/winit/pull/1524">#1524</a></td></tr>
+<tr><td>Clear GL depth buffer</td><td><code>gfx-hal</code></td><td><a href="https://github.com/amethyst/gfx/commit/35c45acb43eebf989d06ba34141e43738d77b991"><code>35c45ac</code></a></td><td>✔️ <a href="https://github.com/gfx-rs/gfx/issues/3202">#3202</a>, <a href="https://github.com/gfx-rs/gfx/pull/3205">#3205</a></td></tr>
+<tr><td>Load <code>Rgb8Srgb</code> texture format</td><td><code>gfx-hal</code></td><td><a href="https://github.com/amethyst/gfx/commit/c4b75d3d17f2fad7bd7ea93c8be8a92a6329d972"><code>c4b75d3</code></a></td><td>✔️ <a href="https://github.com/gfx-rs/gfx/issues/3222">#3222</a>, <a href="https://github.com/gfx-rs/gfx/pull/3223">#3223</a></td></tr>
+<tr><td>Proper <code>AudioSocket</code> support</td><td><code>cpal</code></td><td><a href="https://github.com/amethyst/cpal/commit/ee1ee1a957ec6b0f761dd2568ec487e33619ffbc"><code>ee1ee1a</code></a>, <a href="https://github.com/amethyst/amethyst/issues/2195">#2195</a>, <a href="https://github.com/amethyst/amethyst/pull/2219">#2219</a>, <a href="https://github.com/amethyst/pong_wasm/pull/3">#3</a></td><td>❌ <a href="https://github.com/RustAudio/cpal/pull/372">#372</a>, <a href="https://github.com/amethyst/amethyst/issues/2222">#2222</a></td></tr>
+<tr><td>Load configuration from server</td><td><code>amethyst</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2214">#2214</a>, <a href="https://github.com/amethyst/pong_wasm/pull/4">#4</a></td><td>❌</td></tr>
+<tr><td>Integration test support</td><td><code>amethyst_test</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2241">#2241</a>, <a href="https://github.com/azriel91/autexousious/issues/222">#222</a>, <a href="https://github.com/azriel91/autexousious/pull/223">#223</a></td><td>✔️ <a href="https://github.com/amethyst/amethyst/pull/2240">#2240</a>, <a href="https://github.com/amethyst/amethyst/pull/2245">#2245</a></td></tr>
+<tr><td>Configurable web logger</td><td><code>console_log</code>, <code>amethyst</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2249">#2249</a>, <a href="https://github.com/amethyst/amethyst/pull/2250">#2250</a></td><td>✔️ <a href="https://github.com/iamcodemaker/console_log/pull/6">#6</a></td></tr>
+<tr><td>Overwritten canvas dimensions</td><td><code>gfx-hal</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2247">#2247</a>, <a href="https://github.com/amethyst/gfx/commit/8537dfbe5ef742309496b7282a07653fc88f037d"><code>8537dfb</code></a></td><td>✔️ <a href="https://github.com/gfx-rs/gfx/issues/3224">#3224</a>, <a href="https://github.com/gfx-rs/gfx/pull/3225">#3225</a></td></tr>
+<tr><td><code>WebSocket</code> transport layer</td><td><code>amethyst_network</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2251">#2251</a>, <a href="https://github.com/azriel91/autexousious/issues/209">#209</a>, <a href="https://github.com/azriel91/autexousious/pull/221">#221</a></td><td>✔️ <a href="https://github.com/amethyst/amethyst/pull/2253">#2253</a></td></tr>
+</tbody></table>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
