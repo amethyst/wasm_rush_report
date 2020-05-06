@@ -2,6 +2,8 @@
 
 Report about adding WASM support to the Amethyst game engine.
 
+* Online book: https://amethyst.github.io/wasm_rush_report/
+
 ## Building Locally
 
 See below for commands.
