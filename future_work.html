@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Implementation - WASM Rush</title>
+        <title>Future Work - WASM Rush</title>
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="initial_state.html"><strong aria-hidden="true">2.</strong> Initial State</a></li><li class="chapter-item expanded "><a href="plan.html"><strong aria-hidden="true">3.</strong> Plan</a></li><li class="chapter-item expanded "><a href="implementation.html" class="active"><strong aria-hidden="true">4.</strong> Implementation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="implementation/week_1_contribution_baseline.html"><strong aria-hidden="true">4.1.</strong> Week 1: Contribution Baseline</a></li><li class="chapter-item expanded "><a href="implementation/week_2_end_to_end_discovery.html"><strong aria-hidden="true">4.2.</strong> Week 2: End-to-End Discovery</a></li><li class="chapter-item expanded "><a href="implementation/week_3_stability_and_ui.html"><strong aria-hidden="true">4.3.</strong> Week 3: Stability and UI</a></li><li class="chapter-item expanded "><a href="implementation/week_4_audio_and_rendering.html"><strong aria-hidden="true">4.4.</strong> Week 4: Audio and Rendering</a></li><li class="chapter-item expanded "><a href="implementation/week_5_tidying.html"><strong aria-hidden="true">4.5.</strong> Week 5: Tidying</a></li><li class="chapter-item expanded "><a href="implementation/week_6_fin_ack.html"><strong aria-hidden="true">4.6.</strong> Week 6: Fin Ack</a></li></ol></li><li class="chapter-item expanded "><a href="issue_summary.html"><strong aria-hidden="true">5.</strong> Issue Summary</a></li><li class="chapter-item expanded "><a href="future_work.html"><strong aria-hidden="true">6.</strong> Future Work</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="initial_state.html"><strong aria-hidden="true">2.</strong> Initial State</a></li><li class="chapter-item expanded "><a href="plan.html"><strong aria-hidden="true">3.</strong> Plan</a></li><li class="chapter-item expanded "><a href="implementation.html"><strong aria-hidden="true">4.</strong> Implementation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="implementation/week_1_contribution_baseline.html"><strong aria-hidden="true">4.1.</strong> Week 1: Contribution Baseline</a></li><li class="chapter-item expanded "><a href="implementation/week_2_end_to_end_discovery.html"><strong aria-hidden="true">4.2.</strong> Week 2: End-to-End Discovery</a></li><li class="chapter-item expanded "><a href="implementation/week_3_stability_and_ui.html"><strong aria-hidden="true">4.3.</strong> Week 3: Stability and UI</a></li><li class="chapter-item expanded "><a href="implementation/week_4_audio_and_rendering.html"><strong aria-hidden="true">4.4.</strong> Week 4: Audio and Rendering</a></li><li class="chapter-item expanded "><a href="implementation/week_5_tidying.html"><strong aria-hidden="true">4.5.</strong> Week 5: Tidying</a></li><li class="chapter-item expanded "><a href="implementation/week_6_fin_ack.html"><strong aria-hidden="true">4.6.</strong> Week 6: Fin Ack</a></li></ol></li><li class="chapter-item expanded "><a href="issue_summary.html"><strong aria-hidden="true">5.</strong> Issue Summary</a></li><li class="chapter-item expanded "><a href="future_work.html" class="active"><strong aria-hidden="true">6.</strong> Future Work</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,46 +147,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#implementation" id="implementation">Implementation</a></h1>
-<p>This section covers the WASM support implementation in chronological (time) order.</p>
-<blockquote>
-<p>ℹ️ <strong>Note:</strong> There is no design process as we are simply adding WASM support to existing functionality, or gating features as unsupported by WASM.</p>
-</blockquote>
+                        <h1><a class="header" href="#future-work" id="future-work">Future Work</a></h1>
+<p>Future work is largely tracked by the issues and PRs marked ❌ on the <a href="issue_summary.html">issue summary page</a>, and can also be seen in the <code>amethyst</code> repository's <a href="https://github.com/amethyst/amethyst/projects/20">WASM project</a> and on the issue tracker under the <a href="https://github.com/amethyst/amethyst/issues?q=is%3Aissue+is%3Aopen+label%3A%22feat%3A+WASM+support%22">&quot;WASM Support&quot;</a> tag.</p>
+<p>Notable items are:</p>
 <ul>
-<li>
-<p><strong>Week 1: Contribution Baseline</strong> – Preparation of repositories and guidelines.</p>
-</li>
-<li>
-<p><strong>Week 2: End-to-End Discovery</strong> – Event loop execution and first successful run of Pong.</p>
-</li>
-<li>
-<p><strong>Week 3: Stability and UI</strong> – WASM memory fix and UI rendering correction.</p>
-</li>
-<li>
-<p><strong>Week 4: Audio and Rendering</strong> – Audio playback and rendering fixes on Windows.</p>
-</li>
-<li>
-<p><strong>Week 5: Tidying</strong> – Input loading and automated testing with GL.</p>
-</li>
-<li>
-<p><strong>Week 6: Fin Ack</strong> – Web sockets, logging, and UI rendering correction.</p>
-</li>
+<li><a href="https://github.com/amethyst/amethyst/issues/2230">Firefox support</a></li>
+<li><a href="https://github.com/amethyst/amethyst/issues/2228">Flakey issues</a></li>
+<li><a href="https://github.com/amethyst/amethyst/issues/2191">Parallel execution</a></li>
 </ul>
+<p>These are necessary for applications to &quot;just work&quot; across major browsers and OSes, and work performantly.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="plan.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="issue_summary.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="implementation/week_1_contribution_baseline.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -196,15 +176,11 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="plan.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="issue_summary.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a rel="next" href="implementation/week_1_contribution_baseline.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 

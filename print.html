@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="initial_state.html"><strong aria-hidden="true">2.</strong> Initial State</a></li><li class="chapter-item expanded "><a href="plan.html"><strong aria-hidden="true">3.</strong> Plan</a></li><li class="chapter-item expanded "><a href="implementation.html"><strong aria-hidden="true">4.</strong> Implementation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="implementation/week_1_contribution_baseline.html"><strong aria-hidden="true">4.1.</strong> Week 1: Contribution Baseline</a></li><li class="chapter-item expanded "><a href="implementation/week_2_end_to_end_discovery.html"><strong aria-hidden="true">4.2.</strong> Week 2: End-to-End Discovery</a></li><li class="chapter-item expanded "><a href="implementation/week_3_stability_and_ui.html"><strong aria-hidden="true">4.3.</strong> Week 3: Stability and UI</a></li><li class="chapter-item expanded "><a href="implementation/week_4_audio_and_rendering.html"><strong aria-hidden="true">4.4.</strong> Week 4: Audio and Rendering</a></li><li class="chapter-item expanded "><a href="implementation/week_5_tidying.html"><strong aria-hidden="true">4.5.</strong> Week 5: Tidying</a></li><li class="chapter-item expanded "><a href="implementation/week_6_fin_ack.html"><strong aria-hidden="true">4.6.</strong> Week 6: Fin Ack</a></li></ol></li><li class="chapter-item expanded "><a href="issue_summary.html"><strong aria-hidden="true">5.</strong> Issue Summary</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="initial_state.html"><strong aria-hidden="true">2.</strong> Initial State</a></li><li class="chapter-item expanded "><a href="plan.html"><strong aria-hidden="true">3.</strong> Plan</a></li><li class="chapter-item expanded "><a href="implementation.html"><strong aria-hidden="true">4.</strong> Implementation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item expanded "><a href="implementation/week_1_contribution_baseline.html"><strong aria-hidden="true">4.1.</strong> Week 1: Contribution Baseline</a></li><li class="chapter-item expanded "><a href="implementation/week_2_end_to_end_discovery.html"><strong aria-hidden="true">4.2.</strong> Week 2: End-to-End Discovery</a></li><li class="chapter-item expanded "><a href="implementation/week_3_stability_and_ui.html"><strong aria-hidden="true">4.3.</strong> Week 3: Stability and UI</a></li><li class="chapter-item expanded "><a href="implementation/week_4_audio_and_rendering.html"><strong aria-hidden="true">4.4.</strong> Week 4: Audio and Rendering</a></li><li class="chapter-item expanded "><a href="implementation/week_5_tidying.html"><strong aria-hidden="true">4.5.</strong> Week 5: Tidying</a></li><li class="chapter-item expanded "><a href="implementation/week_6_fin_ack.html"><strong aria-hidden="true">4.6.</strong> Week 6: Fin Ack</a></li></ol></li><li class="chapter-item expanded "><a href="issue_summary.html"><strong aria-hidden="true">5.</strong> Issue Summary</a></li><li class="chapter-item expanded "><a href="future_work.html"><strong aria-hidden="true">6.</strong> Future Work</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,7 +152,7 @@
                         <h1><a class="header" href="#introduction" id="introduction">Introduction</a></h1>
 <p>This is the report of the initial effort to add Web Assembly (WASM) support to the Amethyst game engine.</p>
 <p>Feel free to refer to this to learn from our experience.</p>
-<p>Report accurate as of 2020-04-25.</p>
+<p>Report accurate as of 2020-05-06.</p>
 <h1><a class="header" href="#initial-state" id="initial-state">Initial State</a></h1>
 <p>Before beginning any implementation work, some <em>scout</em> work was done to collate existing information from pre-existing attempts. The summary from each attempt is listed below.</p>
 <h3><a class="header" href="#jojolepro--a-hrefhttpsgithubcomjojoleproamethysttreewasmamethystwasma" id="jojolepro--a-hrefhttpsgithubcomjojoleproamethysttreewasmamethystwasma">Jojolepro – <a href="https://github.com/jojolepro/amethyst/tree/wasm">amethyst:wasm</a></a></h3>
@@ -600,6 +600,15 @@
 <tr><td>Overwritten canvas dimensions</td><td><code>gfx-hal</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2247">#2247</a>, <a href="https://github.com/amethyst/gfx/commit/8537dfbe5ef742309496b7282a07653fc88f037d"><code>8537dfb</code></a></td><td>✔️ <a href="https://github.com/gfx-rs/gfx/issues/3224">#3224</a>, <a href="https://github.com/gfx-rs/gfx/pull/3225">#3225</a></td></tr>
 <tr><td><code>WebSocket</code> transport layer</td><td><code>amethyst_network</code></td><td><a href="https://github.com/amethyst/amethyst/issues/2251">#2251</a>, <a href="https://github.com/azriel91/autexousious/issues/209">#209</a>, <a href="https://github.com/azriel91/autexousious/pull/221">#221</a></td><td>✔️ <a href="https://github.com/amethyst/amethyst/pull/2253">#2253</a></td></tr>
 </tbody></table>
+<h1><a class="header" href="#future-work" id="future-work">Future Work</a></h1>
+<p>Future work is largely tracked by the issues and PRs marked ❌ on the <a href="issue_summary.html">issue summary page</a>, and can also be seen in the <code>amethyst</code> repository's <a href="https://github.com/amethyst/amethyst/projects/20">WASM project</a> and on the issue tracker under the <a href="https://github.com/amethyst/amethyst/issues?q=is%3Aissue+is%3Aopen+label%3A%22feat%3A+WASM+support%22">&quot;WASM Support&quot;</a> tag.</p>
+<p>Notable items are:</p>
+<ul>
+<li><a href="https://github.com/amethyst/amethyst/issues/2230">Firefox support</a></li>
+<li><a href="https://github.com/amethyst/amethyst/issues/2228">Flakey issues</a></li>
+<li><a href="https://github.com/amethyst/amethyst/issues/2191">Parallel execution</a></li>
+</ul>
+<p>These are necessary for applications to &quot;just work&quot; across major browsers and OSes, and work performantly.</p>
 
                     </main>
 
