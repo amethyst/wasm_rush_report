@@ -11,3 +11,4 @@
     - [Week 5: Tidying](./implementation/week_5_tidying.md)
     - [Week 6: Fin Ack](./implementation/week_6_fin_ack.md)
 - [Issue Summary](./issue_summary.md)
+- [Future Work](./future_work.md)
